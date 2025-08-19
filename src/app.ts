@@ -4,7 +4,7 @@ import { StudentRoutes } from './app/modules/student/student.route';
 
 const app: Application = express();
 
-//parsers
+// parsers
 app.use(express.json());
 app.use(cors());
 
