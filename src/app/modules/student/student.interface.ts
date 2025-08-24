@@ -1,6 +1,8 @@
+import mongoose from 'mongoose';
+
 export type UserName = {
   firstName: string;
-  middleName: string;
+  middleName?: string;
   lastName: string;
 };
 
@@ -20,19 +22,45 @@ export type LocalGuardian = {
   address: string;
 };
 
-export type Student = {
+export type BloodGroup =
+  | 'A+'
+  | 'A-'
+  | 'B+'
+  | 'B-'
+  | 'AB+'
+  | 'AB-'
+  | 'O+'
+  | 'O-';
+export type Gender = 'male' | 'female' | 'other';
+export type Status = 'active' | 'blocked';
+
+export interface IStudent {
   id: string;
   name: UserName;
-  gender: 'male' | 'female';
-  dateOfBirth?: string;
+  gender: Gender;
+  dateOfBirth?: Date;
   email: string;
   contactNo: string;
   emergencyContactNo: string;
-  bloodGroup?: 'A+' | 'A-' | 'B+' | 'B-' | 'AB+' | 'AB-' | 'O+' | 'O-';
+  bloodGroup?: BloodGroup;
   presentAddress: string;
   permanentAddress: string;
   guardian: Guardian;
   localGuardian: LocalGuardian;
   profileImg?: string;
-  isActive: 'active' | 'blocked';
-};
+  isActive: Status;
+  isDeleted?: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
+// Methods interface for instance methods
+export interface IStudentMethods {
+  isUserExists(id: string): Promise<IStudent | null>;
+}
+
+// Static methods interface
+export interface StudentModel
+  extends mongoose.Model<IStudent, object, IStudentMethods> {
+  isUserExists(id: string): Promise<IStudent | null>;
+}
