@@ -7,7 +7,6 @@ const httpStatus = {
 };
 
 const createStudentIntoDB = async (studentData: IStudent) => {
-  // Check if student already exists
   const existingStudent = await StudentModel.isUserExists(studentData.id);
   if (existingStudent) {
     throw new AppError('Student already exists', httpStatus.BAD_REQUEST);
@@ -56,7 +55,7 @@ const getAllStudentsFromDB = async (query: Record<string, unknown> = {}) => {
   const limit = Number(query.limit) || 10;
   const skip = (page - 1) * limit;
 
-  // Field limiting
+  // Field Limiting
   const fields = query.fields
     ? (query.fields as string).split(',').join(' ')
     : '';

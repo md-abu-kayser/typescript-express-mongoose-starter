@@ -195,14 +195,14 @@ const studentSchema = new Schema<IStudent, StudentModelType>(
   },
 );
 
-// Virtual for full name
+// Virtual For Full Name
 studentSchema.virtual('fullName').get(function () {
   return `${this.name.firstName} ${
     this.name.middleName ? this.name.middleName + ' ' : ''
   }${this.name.lastName}`;
 });
 
-// Query middleware to filter out deleted students
+// Query Middleware To Filter Out Deleted Students
 studentSchema.pre('find', function (next) {
   this.find({ isDeleted: { $ne: true } });
   next();
@@ -218,13 +218,13 @@ studentSchema.pre('aggregate', function (next) {
   next();
 });
 
-// Static method to check if student exists
+// Student Exists
 studentSchema.statics.isUserExists = async function (id: string) {
   const existingUser = await this.findOne({ id, isDeleted: false });
   return existingUser;
 };
 
-// Instance method
+// Instance Method
 studentSchema.methods.isUserExists = async function (id: string) {
   const constructorModel = this.constructor as Model<
     IStudent,

@@ -54,12 +54,12 @@ export interface IStudent {
   updatedAt?: Date;
 }
 
-// Methods interface for instance methods
+// Methods Interface
 export interface IStudentMethods {
   isUserExists(id: string): Promise<IStudent | null>;
 }
 
-// Static methods interface
+// Static Methods Interface
 export interface StudentModel
   extends mongoose.Model<IStudent, object, IStudentMethods> {
   isUserExists(id: string): Promise<IStudent | null>;

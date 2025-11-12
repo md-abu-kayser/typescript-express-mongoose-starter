@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import path from 'path';
 
-// Load environment variables
+// Load Environment Variables
 dotenv.config({
   path: path.join(
     process.cwd(),
@@ -9,7 +9,7 @@ dotenv.config({
   ),
 });
 
-// Configuration interface for type safety
+// Interface
 export interface IConfig {
   port: number;
   database_url: string;
@@ -17,7 +17,7 @@ export interface IConfig {
   jwt_secret?: string;
 }
 
-// Validate required environment variables
+// Validate Required Environment Variables
 const validateEnv = () => {
   const requiredEnvVars = ['PORT', 'DATABASE_URL', 'NODE_ENV'];
   const missingVars = requiredEnvVars.filter(
@@ -33,7 +33,7 @@ const validateEnv = () => {
 
 validateEnv();
 
-// Export configuration with proper typing
+// Export Configuration
 export const config: IConfig = {
   port: parseInt(process.env.PORT || '5000', 10),
   database_url: process.env.DATABASE_URL as string,

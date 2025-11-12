@@ -11,7 +11,8 @@ const globalErrorHandler: ErrorRequestHandler = (
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   next: NextFunction,
 ) => {
-  let statusCode = 500; // INTERNAL_SERVER_ERROR
+  // Internet Server Error
+  let statusCode = 500;
   let message = 'Something went wrong!';
   let errorMessages: IGenericErrorMessage[] = [];
 
@@ -45,7 +46,8 @@ const handleZodError = (error: ZodError) => {
     };
   });
 
-  const statusCode = 400; // BAD_REQUEST
+  // Bad Request
+  const statusCode = 400;
   const message = 'Validation Error';
 
   return {

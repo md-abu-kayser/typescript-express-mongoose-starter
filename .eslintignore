@@ -1,2 +1,4 @@
+# .eslintignore here
+# ----------------------------------->>>
 node_modules
 dist

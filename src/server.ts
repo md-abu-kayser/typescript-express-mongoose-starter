@@ -37,6 +37,7 @@ async function main() {
   });
 }
 
+// main server
 main();
 
 process.on('SIGTERM', () => {

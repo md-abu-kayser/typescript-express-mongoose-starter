@@ -21,8 +21,9 @@ const validateRequest = (schema: AnyZodObject) => {
 
         next(
           new AppError(
+            // Bad Request
             `Validation error: ${errorMessages[0].message}`,
-            400, // BAD_REQUEST
+            400,
           ),
         );
       } else {

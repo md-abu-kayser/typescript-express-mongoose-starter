@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-
+// eslint error typescript instant fix:
+// ----------------------------------------------------------------->
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const notFound = (req: Request, res: Response, next: NextFunction) => {

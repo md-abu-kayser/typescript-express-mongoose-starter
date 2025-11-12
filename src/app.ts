@@ -6,11 +6,11 @@ import notFound from './app/middlewares/notFound';
 
 const app: Application = express();
 
-// parsers
+// Parsers
 app.use(express.json());
 app.use(cors());
 
-// health check
+// Health Check
 app.get('/health', (req: Request, res: Response) => {
   res.status(200).json({
     success: true,
@@ -20,13 +20,13 @@ app.get('/health', (req: Request, res: Response) => {
   });
 });
 
-// application routes
+// Application Routes
 app.use('/api/v1/students', StudentRoutes);
 
-// Global error handler
+// Global Error Handler
 app.use(globalErrorHandler);
 
-// Not found route handler
+// Not Found Route Handler
 app.use(notFound);
 
 export default app;

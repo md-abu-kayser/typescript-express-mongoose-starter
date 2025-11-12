@@ -1,5 +1,6 @@
 import { Response } from 'express';
-
+// export interface
+// ------------------------------------->>>
 export interface IApiResponse<T> {
   statusCode: number;
   success: boolean;
